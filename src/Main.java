@@ -1,16 +1,23 @@
+import java.util.ArrayList;
+import java.util.Collections;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ArrayList<Person> peopleList = new ArrayList<>();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        peopleList.add(new Employee("John", "Lennon", "Manager", 27045.78));
+        peopleList.add(new Student("Ringo", "Starr", 2.5));
+        peopleList.add(new Student("Paul", "McCartney", 3.0));
+        peopleList.add(new Employee("George", "Harrison", "Developer", 50000.00));
+
+        Collections.sort(peopleList);
+
+        printData(peopleList);
+    }
+
+    public static void printData(Iterable<Person> people) {
+        for (Person person : people) {
+            System.out.printf("%s earns %.2f tenge%n", person, person.getPaymentAmount());
         }
     }
 }
